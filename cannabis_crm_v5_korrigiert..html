@@ -1,0 +1,695 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="de"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Cannabis Sales CRM — Multiuser V5 (Korrigiert)&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { font-family: 'Inter', sans-serif; background: #f4f6fa; padding: 12px; padding-bottom: 90px; color: #0f1724; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container { max-width: 800px; margin: 0 auto; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.login-screen { background: white; border-radius: 28px; padding: 30px; max-width: 400px; margin: 60px auto; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #eef2f8; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.login-screen h2 { font-size: 1.3rem; margin-bottom: 6px; font-weight: 700; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.login-screen .sub { font-size: 0.75rem; color: #5b6e8c; margin-bottom: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-form { display: flex; flex-direction: column; gap: 12px; text-align: left; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-field { display: flex; flex-direction: column; gap: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-field label { font-size: 0.65rem; font-weight: 600; color: #4a5568; text-transform: uppercase; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-field input { padding: 12px; border-radius: 12px; border: 1px solid #dce3ec; font-size: 0.85rem; font-family: inherit; background: #f8fafc; outline: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-field input:focus { border-color: #0f1724; background: white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-field input.error { border-color: #e53e3e; background: #fff5f5; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-field .error-msg { font-size: 0.65rem; color: #e53e3e; display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auth-field input.error + .error-msg { display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.forgot-link { font-size: 0.7rem; color: #3182ce; text-decoration: none; font-weight: 500; margin-top: 4px; display: inline-block; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.forgot-link:hover { text-decoration: underline; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#appLayer { display: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.sync-banner { background: #48bb78; color: white; text-align: center; font-size: 0.75rem; padding: 6px; border-radius: 12px; margin-bottom: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 6px; transition: background 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.sync-banner.offline { background: #e53e3e; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.user-status-bar { display: flex; justify-content: space-between; align-items: center; background: #0f1724; color: white; padding: 8px 16px; border-radius: 40px; margin-bottom: 12px; font-size: 0.7rem; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.logout-btn { background: rgba(255,255,255,0.15); border: none; color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.65rem; cursor: pointer; font-family: inherit; font-weight: 600; transition: background 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.logout-btn:hover { background: rgba(255,255,255,0.25); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header-card { background: white; border-radius: 24px; padding: 20px; margin-bottom: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); border: 1px solid #eef2f8; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header-card h1 { font-size: 1.4rem; font-weight: 700; letter-spacing: -0.5px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header-card .sub { font-size: 0.75rem; color: #5b6e8c; margin-top: 4px; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.toolbar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn { background: white; border: 1px solid #dce3ec; padding: 10px 16px; border-radius: 40px; font-size: 0.75rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn:hover { background: #f8fafc; transform: translateY(-1px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary { background: #0f1724; color: white; border: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary:hover { background: #1e293b; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.search-box { background: white; border-radius: 40px; padding: 8px 14px; display: flex; gap: 8px; flex: 2; min-width: 180px; border: 1px solid #dce3ec; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.search-box input { border: none; background: transparent; font-size: 0.8rem; outline: none; width: 100%; font-family: inherit; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.lead-card { background: white; border-radius: 20px; margin-bottom: 12px; padding: 16px; box-shadow: 0 2px 6px rgba(0,0,0,0.02); border: 1px solid #eef2f8; transition: box-shadow 0.2s, transform 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.lead-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.06); transform: translateY(-1px); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.apotheke-title-block { display: flex; flex-direction: column; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.apotheke-name { font-weight: 700; font-size: 1.05rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.apotheke-route { font-size: 0.65rem; color: #718096; margin-top: 2px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.priority-badge { font-size: 0.7rem; font-weight: 700; padding: 4px 12px; border-radius: 40px; text-transform: uppercase; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.priority-A { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.priority-B { background: #fef9e3; color: #b45309; border: 1px solid #fde047; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.priority-C { background: #e0f2fe; color: #075985; border: 1px solid #7dd3fc; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.priority-D { background: #e6f7ec; color: #2b6e3c; border: 1px solid #86efac; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-details { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; font-size: 0.7rem; margin: 12px 0; border-top: 1px solid #f0f2f5; padding-top: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.detail-item { background: #f8fafc; padding: 6px 10px; border-radius: 12px; display: flex; flex-direction: column; gap: 2px; border: 1px solid #f1f5f9; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.detail-item span { font-size: 0.6rem; color: #718096; text-transform: uppercase; font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.detail-item strong { color: #1a202c; font-size: 0.75rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.detail-item.overdue { background: #fee2e2; border-color: #fca5a5; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.detail-item.overdue span { color: #b91c1c; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.detail-item.overdue strong { color: #b91c1c; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.detail-item.today { background: #fef9e3; border-color: #fde047; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-actions { display: flex; gap: 8px; margin-top: 12px; justify-content: flex-end; border-top: 1px solid #f0f2f5; padding-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.icon-btn { background: #f1f5f9; border: none; font-size: 0.7rem; font-weight: 600; padding: 8px 14px; border-radius: 30px; cursor: pointer; font-family: inherit; transition: all 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.icon-btn:hover { background: #e2e8f0; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.icon-btn-delete { background: #fee2e2; color: #b91c1c; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.icon-btn-delete:hover { background: #fecaca; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cockpit { background: #0f1724; border-radius: 24px; padding: 16px; margin-top: 20px; color: white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cockpit h3 { font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; color: #94a3b8; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cockpit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cockpit-block { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 10px; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cockpit-number { font-size: 1.15rem; font-weight: 700; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cockpit-label { font-size: 0.58rem; color: #94a3b8; text-transform: uppercase; margin-top: 2px; font-weight: 600; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cockpit-sub { font-size: 0.55rem; color: #64748b; margin-top: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.results-count { font-size: 0.7rem; color: #5b6e8c; margin-bottom: 8px; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.filter-bar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.filter-bar select { padding: 6px 12px; border-radius: 20px; border: 1px solid #dce3ec; font-size: 0.7rem; font-family: inherit; background: white; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); align-items: center; justify-content: center; z-index: 1000; padding: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content { background: white; width: 100%; max-width: 650px; max-height: 85vh; overflow-y: auto; border-radius: 28px; padding: 24px; position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-close-x { position: absolute; top: 16px; right: 20px; font-size: 1.5rem; cursor: pointer; color: #718096; background: none; border: none; font-family: inherit; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-close-x:hover { color: #0f1724; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.excel-block-title { font-size: 0.75rem; font-weight: 700; background: #0f1724; color: white; padding: 6px 12px; border-radius: 8px; margin: 16px 0 8px 0; text-transform: uppercase; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@media(max-width: 500px) { .form-grid { grid-template-columns: 1fr; } }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-field { display: flex; flex-direction: column; gap: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-field label { font-size: 0.65rem; font-weight: 600; color: #4a5568; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-field input, .form-field select { padding: 10px 12px; border-radius: 12px; border: 1px solid #dce3ec; font-size: 0.8rem; font-family: inherit; background: #f8fafc; outline: none; transition: border-color 0.2s, background 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-field input:focus, .form-field select:focus { border-color: #0f1724; background: white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-field input:invalid { border-color: #e53e3e; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-field .field-hint { font-size: 0.6rem; color: #718096; margin-top: 2px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-buttons { display: flex; gap: 10px; margin-top: 24px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.footer-note { text-align: center; font-size: 0.6rem; margin-top: 14px; color: #7c8ea0; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.toast-container { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 2000; display: flex; flex-direction: column; gap: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.toast { background: #0f1724; color: white; padding: 12px 20px; border-radius: 12px; font-size: 0.8rem; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.15); animation: slideUp 0.3s ease; display: flex; align-items: center; gap: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.toast.success { background: #48bb78; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.toast.error { background: #e53e3e; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.toast.warning { background: #ed8936; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.empty-state { text-align: center; padding: 40px 20px; color: #718096; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.empty-state-icon { font-size: 3rem; margin-bottom: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.empty-state-text { font-size: 0.85rem; font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.empty-state-sub { font-size: 0.7rem; margin-top: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="loginScreen" class="login-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h2&gt;🌿 Cannabis Sales CRM&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="sub"&gt;VERSION 5.1 | Multiuser-Login (Baden-Württemberg)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="loginFormContainer" class="auth-form"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="auth-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;E-Mail-Adresse&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="email" id="loginEmail" placeholder="name@firma.de" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="error-msg"&gt;Bitte gültige E-Mail eingeben&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="auth-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;Passwort&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="password" id="loginPassword" placeholder="••••••••" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="error-msg"&gt;Passwort erforderlich&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" style="padding:12px; margin-top:8px;" onclick="handleLogin()" id="loginBtn"&gt;Im System anmelden&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="text-align: center;"&gt;&lt;span class="forgot-link" onclick="toggleAuthView(true)"&gt;Passwort vergessen?&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="forgotFormContainer" class="auth-form" style="display: none;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="auth-field"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;Deine registrierte E-Mail&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="email" id="resetEmail" placeholder="ihre-mail@firma.de" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" style="padding:12px; margin-top:8px;" onclick="handlePasswordReset()"&gt;Reset-Link anfordern&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="text-align: center;"&gt;&lt;span class="forgot-link" onclick="toggleAuthView(false)"&gt;Zurück zum Login&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="appLayer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="user-status-bar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;Eingeloggt als: &lt;span id="currentUserName" style="font-weight:700;"&gt;—&lt;/span&gt; (&lt;span id="currentUserRole"&gt;—&lt;/span&gt;)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="logout-btn" onclick="handleLogout()"&gt;Abmelden 🚪&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="syncIndicator" class="sync-banner"&gt;🔄 Online — Daten synchronisiert&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="header-card"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h1&gt;🌿 CANNABIS SALES CRM SYSTEM&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="sub"&gt;Baden-Württemberg | Apotheken-Leads | USP-Tracking &amp; Umsatzschutz&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="toolbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="newLeadBtn"&gt;➕ Neuer Geo-Lead&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="search-box"&gt;&lt;input type="text" id="globalSearch" placeholder="🔍 Schnellsuche (Name, Ort)..." autocomplete="off"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn" id="exportBtn" style="display:none;"&gt;📎 Admin-Backup Export&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn" id="exportCsvBtn" style="display:none;"&gt;📊 CSV Export&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="filter-bar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="sortSelect"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="prio-desc"&gt;Priorität ↓ (A→D)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="prio-asc"&gt;Priorität ↑ (D→A)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="umsatz-desc"&gt;Umsatz ↓&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="umsatz-asc"&gt;Umsatz ↑&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="wiedervorlage"&gt;Wiedervorlage ↑&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="name"&gt;Name A-Z&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="filterPrio"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value=""&gt;Alle Prioritäten&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="A"&gt;Nur A (Rot)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="B"&gt;Nur B (Gelb)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="C"&gt;Nur C (Blau)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="D"&gt;Nur D (Grün)&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;select id="filterStatus"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value=""&gt;Alle Status&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="Aktiv"&gt;Aktiv&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="Im Kontakt"&gt;Im Kontakt&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="Lead"&gt;Lead&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;option value="Inaktiv"&gt;Inaktiv&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="results-count" id="resultsCount"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="leadList"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cockpit"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3 id="cockpitTitle"&gt;📊 Vertriebs-Cockpit&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="cockpit-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="cockpit-block" id="cockpitSteuerung"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="cockpit-block" id="cockpitUmsatz"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="cockpit-block" id="cockpitAktivitaet"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="footer-note"&gt;✅ Hierarchischer Umsatzschutz aktiv · Offline-Betrieb voll unterstützt · V5.1 Korrigiert&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div class="toast-container" id="toastContainer"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;div id="editModal" class="modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="modal-close-x" onclick="closeModal()"&gt;&amp;times;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3 id="modalTitle"&gt;Apotheken-Lead bearbeiten&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;input type="hidden" id="field_id"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;form id="leadForm" onsubmit="return false;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="excel-block-title"&gt;1. Stammdaten &amp; Logistik&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Apothekenname *&lt;/label&gt;&lt;input type="text" id="field_apothekenname" required minlength="2" maxlength="100"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Stadt&lt;/label&gt;&lt;input type="text" id="field_stadt" placeholder="Für automatische Routenzuweisung" maxlength="50"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;PLZ *&lt;/label&gt;&lt;input type="text" id="field_plz" placeholder="5-stellig" maxlength="5" pattern="[0-9]{5}" required&gt;&lt;span class="field-hint"&gt;5-stellige deutsche PLZ&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Adresse&lt;/label&gt;&lt;input type="text" id="field_adresse" maxlength="100"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Versand erlaubt&lt;/label&gt;&lt;select id="field_versandErlaubt"&gt;&lt;option&gt;Ja&lt;/option&gt;&lt;option&gt;Nein&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="excel-block-title"&gt;2. Kontaktwege &amp; Entscheider&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Telefonnummer&lt;/label&gt;&lt;input type="tel" id="field_telefonnummer" maxlength="30"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;E-Mail&lt;/label&gt;&lt;input type="email" id="field_email" maxlength="100"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Ansprechpartner&lt;/label&gt;&lt;input type="text" id="field_ansprechpartner" maxlength="50"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Entscheider-Typ&lt;/label&gt;&lt;input type="text" id="field_entscheiderTyp" maxlength="50"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="excel-block-title"&gt;3. Vertriebspriorisierung &amp; Schutz&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Priorität&lt;/label&gt;&lt;select id="field_prioritaet"&gt;&lt;option value="A"&gt;A = Rot (Top)&lt;/option&gt;&lt;option value="B"&gt;B = Gelb (Hoch)&lt;/option&gt;&lt;option value="C"&gt;C = Blau (Mittel)&lt;/option&gt;&lt;option value="D"&gt;D = Grün (Niedrig)&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Potenzial&lt;/label&gt;&lt;select id="field_potenzial"&gt;&lt;option&gt;Hoch&lt;/option&gt;&lt;option&gt;Mittel&lt;/option&gt;&lt;option&gt;Niedrig&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Vertriebs-Status&lt;/label&gt;&lt;select id="field_vertriebsStatus"&gt;&lt;option&gt;Aktiv&lt;/option&gt;&lt;option&gt;Im Kontakt&lt;/option&gt;&lt;option&gt;Lead&lt;/option&gt;&lt;option&gt;Inaktiv&lt;/option&gt;&lt;/select&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Verantwortlicher Außendienst (automatisch)&lt;/label&gt;&lt;input type="text" id="field_verantwortlich" readonly style="background:#e2e8f0;"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="excel-block-title"&gt;4. Umsatzsteuerung&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Bisheriger Umsatz (€)&lt;/label&gt;&lt;input type="number" step="0.01" min="0" id="field_bisherigerUmsatz" value="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Neue Bestellung (€)&lt;/label&gt;&lt;input type="number" step="0.01" min="0" id="field_neueBestellung" value="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Monatliches Potenzial (€)&lt;/label&gt;&lt;input type="number" step="0.01" min="0" id="field_monatlichesPotenzial" value="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="excel-block-title"&gt;5. USP-Portfolio (Mengen)&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Menge Blüten (g)&lt;/label&gt;&lt;input type="number" min="0" id="field_mengeBlueten" value="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Peptide (Stk) [USP]&lt;/label&gt;&lt;input type="number" min="0" id="field_peptide" value="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Cookies (Stk) [USP]&lt;/label&gt;&lt;input type="number" min="0" id="field_cookies" value="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Haschisch / Pollinat (g)&lt;/label&gt;&lt;input type="number" min="0" id="field_haschisch" value="0"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="excel-block-title"&gt;6. Pipeline &amp; Aktionen&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Nächste geplante Aktion&lt;/label&gt;&lt;input type="text" id="field_naechsteAktion" maxlength="100"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-field"&gt;&lt;label&gt;Wiedervorlage (Follow-up)&lt;/label&gt;&lt;input type="date" id="field_wiedervorlage"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="modal-buttons"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="btn" id="modalCancelBtn" style="flex:1"&gt;Abbrechen&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="btn btn-primary" id="modalSaveBtn" style="flex:1"&gt;Sicher Speichern&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/form&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p1">&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>const CONFIG = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>STORAGE_KEY: "cannabis_crm_v5_multiuser",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>SESSION_KEY: "cannabis_crm_session",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>DATA_VERSION: "5.1",</p>
+<p class="p1"><span class="Apple-converted-space">        </span>MAX_LOGIN_ATTEMPTS: 5,</p>
+<p class="p1"><span class="Apple-converted-space">        </span>LOGIN_COOLDOWN_MS: 300000</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function sha256(message) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const msgBuffer = new TextEncoder().encode(message);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const hashArray = Array.from(new Uint8Array(hashBuffer));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return hashArray.map(b =&gt; b.toString(16).padStart(2, '0')).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>const USERS = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"oliver@firma.de": { name: "Oliver Heidel", role: "Gebietsleiter", passHash: "Admin2026!" },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"max@firma.de": { name: "Max Mustermann", role: "Außendienst", passHash: "Start1" },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"anna@firma.de": { name: "Anna Schmidt", role: "Außendienst", passHash: "Start2" },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"tom@firma.de": { name: "Tom Weber", role: "Außendienst", passHash: "Start3" },</p>
+<p class="p1"><span class="Apple-converted-space">        </span>"lisa@firma.de": { name: "Lisa Fischer", role: "Außendienst", passHash: "Start4" }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>let currentUser = null;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let leads = [];</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let loginAttempts = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let loginLockedUntil = 0;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let searchDebounceTimer = null;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function showToast(message, type = 'info', duration = 3000) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const container = document.getElementById('toastContainer');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const toast = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>toast.className = `toast ${type}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const icons = { info: 'ℹ️', success: '✅', error: '❌', warning: '⚠️' };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>toast.innerHTML = `&lt;span&gt;${icons[type] || 'ℹ️'}&lt;/span&gt;&lt;span&gt;${escapeHtml(message)}&lt;/span&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.appendChild(toast);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>toast.style.opacity = '0';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>toast.style.transform = 'translateY(20px)';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; toast.remove(), 300);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}, duration);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function saveSession() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (currentUser) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const session = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>email: Object.keys(USERS).find(k =&gt; USERS[k].name === currentUser.name),</p>
+<p class="p1"><span class="Apple-converted-space">                </span>role: currentUser.role,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>name: currentUser.name,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>timestamp: Date.now()</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>try { sessionStorage.setItem(CONFIG.SESSION_KEY, JSON.stringify(session)); } catch (e) {}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function restoreSession() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const session = JSON.parse(sessionStorage.getItem(CONFIG.SESSION_KEY));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (session &amp;&amp; session.timestamp &amp;&amp; (Date.now() - session.timestamp) &lt; 3600000) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const email = session.email;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (USERS[email]) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentUser = { name: USERS[email].name, role: USERS[email].role };</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>activateAppLayer();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>return true;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch (e) {}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return false;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function clearSession() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try { sessionStorage.removeItem(CONFIG.SESSION_KEY); } catch (e) {}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function toggleAuthView(showForgot) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("loginFormContainer").style.display = showForgot ? "none" : "flex";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("forgotFormContainer").style.display = showForgot ? "flex" : "none";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.auth-field input').forEach(input =&gt; input.classList.remove('error'));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function handlePasswordReset() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const email = document.getElementById("resetEmail").value.trim().toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!email) { showToast("Bitte gib deine E-Mail-Adresse ein.", "warning"); return; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (USERS[email]) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast(`🔒 Reset-Link an ${email} gesendet!`, "success");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>toggleAuthView(false);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast("Diese E-Mail-Adresse ist nicht registriert.", "error");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function handleLogin() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (Date.now() &lt; loginLockedUntil) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const remaining = Math.ceil((loginLockedUntil - Date.now()) / 60000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast(`Zu viele Versuche. Bitte warte ${remaining} Minuten.`, "error");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const email = document.getElementById("loginEmail").value.trim().toLowerCase();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pass = document.getElementById("loginPassword").value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const emailInput = document.getElementById("loginEmail");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const passInput = document.getElementById("loginPassword");</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let hasError = false;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!email || !email.includes('@')) { emailInput.classList.add('error'); hasError = true; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else { emailInput.classList.remove('error'); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!pass) { passInput.classList.add('error'); hasError = true; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>else { passInput.classList.remove('error'); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (hasError) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const user = USERS[email];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (user) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const isValid = user.passHash === pass;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isValid) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>loginAttempts = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentUser = { name: user.name, role: user.role };</p>
+<p class="p1"><span class="Apple-converted-space">                </span>saveSession();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>activateAppLayer();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showToast(`Willkommen zurück, ${user.name}!`, "success");</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>loginAttempts++;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (loginAttempts &gt;= CONFIG.MAX_LOGIN_ATTEMPTS) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loginLockedUntil = Date.now() + CONFIG.LOGIN_COOLDOWN_MS;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast(`Zu viele Fehlversuche. Account für 5 Minuten gesperrt.`, "error");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast(`Zugangsdaten ungültig. Noch ${CONFIG.MAX_LOGIN_ATTEMPTS - loginAttempts} Versuche.`, "error");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>passInput.classList.add('error');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function activateAppLayer() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("loginScreen").style.display = "none";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("appLayer").style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("currentUserName").innerText = currentUser.name;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("currentUserRole").innerText = currentUser.role;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const isAdmin = currentUser.role === "Gebietsleiter";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("exportBtn").style.display = isAdmin ? "inline-flex" : "none";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("exportCsvBtn").style.display = isAdmin ? "inline-flex" : "none";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>loadSystemData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateOnlineStatus();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function handleLogout() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>currentUser = null;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>clearSession();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("loginScreen").style.display = "block";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("appLayer").style.display = "none";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("loginEmail").value = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("loginPassword").value = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showToast("Erfolgreich abgemeldet.", "info");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateOnlineStatus() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const indicator = document.getElementById("syncIndicator");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (navigator.onLine) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>indicator.className = "sync-banner";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>indicator.innerHTML = "🔄 Online — Daten synchronisiert";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>indicator.className = "sync-banner offline";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>indicator.innerHTML = "📴 Offline — Lokaler Modus aktiv";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('online', () =&gt; { updateOnlineStatus(); showToast("Verbindung wiederhergestellt!", "success"); });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>window.addEventListener('offline', () =&gt; { updateOnlineStatus(); showToast("Offline-Modus aktiviert.", "warning"); });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function autoAssignAußendienst(plz) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!plz || plz.length &lt; 2) return "Nicht zugewiesen / Pool";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const prefix = plz.substring(0, 2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (["70", "71", "72", "89"].includes(prefix)) return "Max Mustermann";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (["68", "69", "75", "76"].includes(prefix)) return "Anna Schmidt";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (["77", "78", "79"].includes(prefix)) return "Tom Weber";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (["73", "74"].includes(prefix)) return "Lisa Fischer";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return "Nicht zugewiesen / Pool";</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function calculateLiveData(lead) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>lead.gesamtUmsatzLive = (parseFloat(lead.bisherigerUmsatz) || 0) + (parseFloat(lead.neueBestellung) || 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>lead.vertriebsroute = lead.plz ? "Route: " + lead.plz.substring(0,2) : "Unbekannt";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!lead.verantwortlich &amp;&amp; lead.plz) { lead.verantwortlich = autoAssignAußendienst(lead.plz); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return lead;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function loadSystemData() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const local = localStorage.getItem(CONFIG.STORAGE_KEY);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (local) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const parsed = JSON.parse(local);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (parsed.version &amp;&amp; parsed.version === CONFIG.DATA_VERSION) { leads = parsed.data || []; }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else { leads = Array.isArray(parsed) ? parsed : (parsed.data || []); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else { initDemoData(); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast("Fehler beim Laden der Daten. Demo-Daten werden verwendet.", "warning");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>initDemoData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>leads.forEach(calculateLiveData);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderLeads();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderCockpit();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function initDemoData() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>leads = [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: "1", apothekenname: "Canna Apotheke Stuttgart", stadt: "Stuttgart", plz: "70173", adresse: "Königstraße 12", verantwortlich: "Max Mustermann", prioritaet: "A", bisherigerUmsatz: 15000, neueBestellung: 3000, monatlichesPotenzial: 25000, cookies: 90, peptide: 45, naechsteAktion: "Musterübergabe", wiedervorlage: "2026-06-05", vertriebsStatus: "Aktiv" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: "2", apothekenname: "Grüne Apotheke Freiburg", stadt: "Freiburg", plz: "79098", adresse: "Kaiserstraße 4", verantwortlich: "Tom Weber", prioritaet: "B", bisherigerUmsatz: 5000, neueBestellung: 1200, monatlichesPotenzial: 9000, cookies: 12, peptide: 5, naechsteAktion: "Telefonat", wiedervorlage: "2026-06-12", vertriebsStatus: "Im Kontakt" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ id: "3", apothekenname: "Hof-Apotheke Karlsruhe", stadt: "Karlsruhe", plz: "76133", adresse: "Marktplatz 2", verantwortlich: "Anna Schmidt", prioritaet: "A", bisherigerUmsatz: 22000, neueBestellung: 4500, monatlichesPotenzial: 35000, cookies: 110, peptide: 60, naechsteAktion: "Vertragserneuerung", wiedervorlage: "2026-05-30", vertriebsStatus: "Aktiv" }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveSystemData();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function saveSystemData() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const payload = { version: CONFIG.DATA_VERSION, timestamp: Date.now(), data: leads };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(payload));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch (e) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast("Speicherfehler! Daten konnten nicht gespeichert werden.", "error");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getWiedervorlageStatus(dateStr) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!dateStr) return { status: 'none', label: '—' };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const today = new Date(); today.setHours(0, 0, 0, 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const wvDate = new Date(dateStr); wvDate.setHours(0, 0, 0, 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const diffDays = Math.floor((wvDate - today) / (1000 * 60 * 60 * 24));</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (diffDays &lt; 0) return { status: 'overdue', label: `⚠️ Überfällig (${Math.abs(diffDays)} Tage)`, class: 'overdue' };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (diffDays === 0) return { status: 'today', label: '🔥 Heute fällig', class: 'today' };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (diffDays === 1) return { status: 'tomorrow', label: '⏰ Morgen', class: '' };</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return { status: 'future', label: `📅 ${dateStr}`, class: '' };</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function getSortFunction() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const sortValue = document.getElementById('sortSelect').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>switch(sortValue) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>case 'prio-desc': return (a, b) =&gt; (a.prioritaet || 'D').localeCompare(b.prioritaet || 'D');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>case 'prio-asc': return (a, b) =&gt; (b.prioritaet || 'D').localeCompare(a.prioritaet || 'D');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>case 'umsatz-desc': return (a, b) =&gt; (b.gesamtUmsatzLive || 0) - (a.gesamtUmsatzLive || 0);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>case 'umsatz-asc': return (a, b) =&gt; (a.gesamtUmsatzLive || 0) - (b.gesamtUmsatzLive || 0);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>case 'wiedervorlage': return (a, b) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const da = a.wiedervorlage ? new Date(a.wiedervorlage) : new Date('2099-01-01');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const db = b.wiedervorlage ? new Date(b.wiedervorlage) : new Date('2099-01-01');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return da - db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>case 'name': return (a, b) =&gt; (a.apothekenname || '').localeCompare(b.apothekenname || '');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>default: return () =&gt; 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderLeads() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const container = document.getElementById("leadList");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>container.innerHTML = "";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const search = document.getElementById("globalSearch").value.toLowerCase().trim();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const prioFilter = document.getElementById('filterPrio').value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const statusFilter = document.getElementById('filterStatus').value;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let visibleLeads = leads.filter(l =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentUser.role !== "Gebietsleiter" &amp;&amp; l.verantwortlich !== currentUser.name) return false;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const matchesSearch = !search || (l.apothekenname &amp;&amp; l.apothekenname.toLowerCase().includes(search)) || (l.stadt &amp;&amp; l.stadt.toLowerCase().includes(search)) || (l.plz &amp;&amp; l.plz.includes(search));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const matchesPrio = !prioFilter || l.prioritaet === prioFilter;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const matchesStatus = !statusFilter || l.vertriebsStatus === statusFilter;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return matchesSearch &amp;&amp; matchesPrio &amp;&amp; matchesStatus;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>visibleLeads.sort(getSortFunction());</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const countEl = document.getElementById('resultsCount');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (visibleLeads.length === 0) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>countEl.textContent = search || prioFilter || statusFilter ? 'Keine Ergebnisse gefunden' : '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.innerHTML = `&lt;div class="empty-state"&gt;&lt;div class="empty-state-icon"&gt;📭&lt;/div&gt;&lt;div class="empty-state-text"&gt;Keine Leads gefunden&lt;/div&gt;&lt;div class="empty-state-sub"&gt;${search ? 'Passe deine Suche an oder erstelle einen neuen Lead.' : 'Erstelle deinen ersten Lead mit dem Button oben.'}&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>countEl.textContent = `${visibleLeads.length} Lead${visibleLeads.length !== 1 ? 's' : ''} angezeigt`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>visibleLeads.forEach(lead =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const wvStatus = getWiedervorlageStatus(lead.wiedervorlage);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const card = document.createElement("div");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>card.className = "lead-card";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>card.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="apotheke-title-block"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="apotheke-name"&gt;${escapeHtml(lead.apothekenname)}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="apotheke-route"&gt;📍 ${escapeHtml(lead.stadt || '—')} ${escapeHtml(lead.plz || '')} (Betreuer: ${escapeHtml(lead.verantwortlich || '—')})&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span class="priority-badge priority-${escapeHtml(lead.prioritaet || 'D')}"&gt;Prio ${escapeHtml(lead.prioritaet || 'D')}&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-details"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="detail-item"&gt;&lt;span&gt;Live-Umsatz&lt;/span&gt;&lt;strong&gt;${(lead.gesamtUmsatzLive || 0).toLocaleString('de-DE')} €&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="detail-item"&gt;&lt;span&gt;Monatspotenzial&lt;/span&gt;&lt;strong&gt;${(parseFloat(lead.monatlichesPotenzial)||0).toLocaleString('de-DE')} €&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="detail-item"&gt;&lt;span&gt;USP Portfolio&lt;/span&gt;&lt;strong&gt;🍪 ${lead.cookies||0} / 🧬 ${lead.peptide||0} Stk&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="detail-item ${wvStatus.class}"&gt;&lt;span&gt;Wiedervorlage&lt;/span&gt;&lt;strong&gt;${wvStatus.label}&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="detail-item"&gt;&lt;span&gt;Status&lt;/span&gt;&lt;strong&gt;${escapeHtml(lead.vertriebsStatus || 'Lead')}&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="detail-item"&gt;&lt;span&gt;Nächste Aktion&lt;/span&gt;&lt;strong&gt;${escapeHtml(lead.naechsteAktion || '—')}&lt;/strong&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="card-actions"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="icon-btn" onclick="openModal('${escapeHtml(lead.id)}')"&gt;✏️ Bearbeiten&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>${currentUser.role === 'Gebietsleiter' ? `&lt;button class="icon-btn icon-btn-delete" onclick="deleteLead('${escapeHtml(lead.id)}')"&gt;🗑️ Löschen&lt;/button&gt;` : ''}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>container.appendChild(card);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderCockpit() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let contextLeads = leads.filter(l =&gt; currentUser.role === "Gebietsleiter" || l.verantwortlich === currentUser.name);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const aCount = contextLeads.filter(l =&gt; l.prioritaet === "A").length;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const overdueCount = contextLeads.filter(l =&gt; getWiedervorlageStatus(l.wiedervorlage).status === 'overdue').length;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const totalUmsatz = contextLeads.reduce((sum, l) =&gt; sum + (l.gesamtUmsatzLive || 0), 0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const totalPotenzial = contextLeads.reduce((sum, l) =&gt; sum + (parseFloat(l.monatlichesPotenzial) || 0), 0);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("cockpitTitle").innerText = currentUser.role === "Gebietsleiter" ? "📊 Live-Zentrale (Gesamt-Baden-Württemberg)" : "📊 Meine Vertriebs-KPIs";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("cockpitSteuerung").innerHTML = `&lt;div class="cockpit-number"&gt;${aCount}&lt;/div&gt;&lt;div class="cockpit-label"&gt;Top-Kunden (A)&lt;/div&gt;&lt;div class="cockpit-sub"&gt;${overdueCount} überfällig&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("cockpitUmsatz").innerHTML = `&lt;div class="cockpit-number"&gt;${totalUmsatz.toLocaleString('de-DE')} €&lt;/div&gt;&lt;div class="cockpit-label"&gt;Live-Umsatz geschützt&lt;/div&gt;&lt;div class="cockpit-sub"&gt;${contextLeads.length} Kunden&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("cockpitAktivitaet").innerHTML = `&lt;div class="cockpit-number"&gt;${totalPotenzial.toLocaleString('de-DE')} €&lt;/div&gt;&lt;div class="cockpit-label"&gt;Gesamtpotenzial&lt;/div&gt;&lt;div class="cockpit-sub"&gt;pro Monat&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openModal(id = null) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const isNew = id === null;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let data = isNew ? { id: "APO-"+Date.now(), prioritaet: "C", bisherigerUmsatz: 0, neueBestellung: 0, cookies: 0, peptide: 0, mengeBlueten: 0, haschisch: 0, verantwortlich: currentUser.role === "Gebietsleiter" ? "Pool" : currentUser.name, vertriebsStatus: "Lead" } : leads.find(l =&gt; l.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!isNew &amp;&amp; !data) { showToast("Lead nicht gefunden!", "error"); return; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("modalTitle").innerText = isNew ? "Neuen Apotheken-Lead erstellen" : "Apotheken-Lead bearbeiten";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("field_id").value = data.id;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const fields = ["apothekenname", "stadt", "plz", "adresse", "versandErlaubt", "telefonnummer", "email", "ansprechpartner", "entscheiderTyp", "prioritaet", "potenzial", "vertriebsStatus", "verantwortlich", "bisherigerUmsatz", "neueBestellung", "monatlichesPotenzial", "mengeBlueten", "peptide", "cookies", "haschisch", "naechsteAktion", "wiedervorlage"];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>fields.forEach(f =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const el = document.getElementById(`field_${f}`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(el) { el.value = data[f] !== undefined ? data[f] : (el.type === "number" ? 0 : ""); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("editModal").style.display = "flex";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.style.overflow = 'hidden';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function closeModal() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById("editModal").style.display = "none";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.body.style.overflow = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function saveModal() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const form = document.getElementById('leadForm');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!form.checkValidity()) { form.reportValidity(); showToast("Bitte fülle alle Pflichtfelder aus.", "warning"); return; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const id = document.getElementById("field_id").value;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let idx = leads.findIndex(l =&gt; l.id === id);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let target = idx !== -1 ? leads[idx] : { id: id };</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const fields = ["apothekenname", "stadt", "plz", "adresse", "versandErlaubt", "telefonnummer", "email", "ansprechpartner", "entscheiderTyp", "prioritaet", "potenzial", "vertriebsStatus", "verantwortlich", "bisherigerUmsatz", "neueBestellung", "monatlichesPotenzial", "mengeBlueten", "peptide", "cookies", "haschisch", "naechsteAktion", "wiedervorlage"];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>fields.forEach(f =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const el = document.getElementById(`field_${f}`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(el) { target[f] = el.type === "number" ? (parseFloat(el.value) || 0) : el.value.trim(); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (target.plz &amp;&amp; !/^\d{5}$/.test(target.plz)) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast("Bitte eine gültige 5-stellige PLZ eingeben.", "warning");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById("field_plz").focus();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>calculateLiveData(target);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(idx === -1) leads.push(target);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>saveSystemData();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderLeads();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderCockpit();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>closeModal();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>showToast(idx === -1 ? "Lead erfolgreich erstellt!" : "Änderungen gespeichert!", "success");</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function deleteLead(id) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(confirm("Diesen Lead unwiderruflich aus der Systemdatenbank löschen?")) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>leads = leads.filter(l =&gt; l.id !== id);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>saveSystemData();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderLeads();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderCockpit();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast("Lead gelöscht.", "info");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function escapeHtml(str) { if(str === null || str === undefined) return ""; return String(str).replace(/[&amp;&lt;&gt;"']/g, m =&gt; ({ '&amp;': '&amp;amp;', '&lt;': '&amp;lt;', '&gt;': '&amp;gt;', '"': '&amp;quot;', "'": '&amp;#39;' }[m])); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function debounce(func, wait) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>return function executedFunction(...args) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const later = () =&gt; { clearTimeout(searchDebounceTimer); func(...args); };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clearTimeout(searchDebounceTimer);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>searchDebounceTimer = setTimeout(later, wait);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("newLeadBtn").onclick = () =&gt; openModal(null);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("modalCancelBtn").onclick = closeModal;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("modalSaveBtn").onclick = saveModal;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("field_plz").addEventListener('input', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>e.target.value = e.target.value.replace(/\D/g, '').substring(0, 5);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(e.target.value.length &gt;= 2) { document.getElementById("field_verantwortlich").value = autoAssignAußendienst(e.target.value); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("globalSearch").addEventListener('input', debounce(() =&gt; renderLeads(), 300));</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('sortSelect').addEventListener('change', renderLeads);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('filterPrio').addEventListener('change', renderLeads);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('filterStatus').addEventListener('change', renderLeads);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("exportBtn").onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const payload = { version: CONFIG.DATA_VERSION, exportedAt: new Date().toISOString(), exportedBy: currentUser.name, data: leads };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(payload, null, 2));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dl = document.createElement('a'); dl.setAttribute("href", dataStr); dl.setAttribute("download", `GLOBAL_CRM_BACKUP_${new Date().toISOString().split('T')[0]}.json`); dl.click();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast("JSON-Backup exportiert!", "success");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch (e) { showToast("Export fehlgeschlagen.", "error"); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("exportCsvBtn").onclick = () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const headers = ["ID", "Apothekenname", "Stadt", "PLZ", "Adresse", "Verantwortlich", "Prioritaet", "Status", "Bisheriger Umsatz", "Neue Bestellung", "Gesamt Umsatz", "Monatliches Potenzial", "Cookies", "Peptide", "Wiedervorlage", "Naechste Aktion"];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const rows = leads.map(l =&gt; [l.id, l.apothekenname, l.stadt, l.plz, l.adresse, l.verantwortlich, l.prioritaet, l.vertriebsStatus, l.bisherigerUmsatz, l.neueBestellung, l.gesamtUmsatzLive, l.monatlichesPotenzial, l.cookies, l.peptide, l.wiedervorlage, l.naechsteAktion]);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const csvContent = [headers, ...rows].map(row =&gt; row.map(cell =&gt; `"${(cell || '').toString().replace(/"/g, '""')}"`).join(";")).join("\n");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const bom = "\uFEFF";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dataStr = "data:text/csv;charset=utf-8," + encodeURIComponent(bom + csvContent);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dl = document.createElement('a'); dl.setAttribute("href", dataStr); dl.setAttribute("download", `CRM_EXPORT_${new Date().toISOString().split('T')[0]}.csv`); dl.click();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>showToast("CSV-Export erstellt!", "success");</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch (e) { showToast("CSV-Export fehlgeschlagen.", "error"); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("loginPassword").addEventListener('keypress', function(e) { if (e.key === 'Enter') handleLogin(); });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("loginEmail").addEventListener('keypress', function(e) { if (e.key === 'Enter') document.getElementById("loginPassword").focus(); });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("resetEmail").addEventListener('keypress', function(e) { if (e.key === 'Enter') handlePasswordReset(); });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById("editModal").addEventListener('click', function(e) { if (e.target === this) closeModal(); });</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.addEventListener('keydown', function(e) { if (e.key === 'Escape' &amp;&amp; document.getElementById("editModal").style.display === 'flex') closeModal(); });</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.addEventListener('DOMContentLoaded', function() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if (!restoreSession()) { document.getElementById("loginScreen").style.display = "block"; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>updateOnlineStatus();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
